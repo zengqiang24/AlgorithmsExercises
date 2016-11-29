@@ -5,22 +5,22 @@ package StackAndQueue;
  * linked-list stack
  * Created by qiangzeng on 16/11/28.
  */
-public class LinkedStack implements MyStack<String> {
+public class LinkedStack<T>  {
     Node first = null;
 
     private int N;
 
-    @Override
+
     public boolean isEmpty() {
         return first == null;
     }
 
-    @Override
-    public String pop() {
+
+    public T pop() {
         if (first == null) {
             return null;
         }
-        String item = first.item;
+        T item = first.item;
         first = first.next;
         N--;
         return item;
@@ -30,8 +30,8 @@ public class LinkedStack implements MyStack<String> {
         return N;
     }
 
-    @Override
-    public void push(String item) {
+
+    public void push(T item) {
 
         if (first == null) {
             first = new Node();
@@ -48,7 +48,7 @@ public class LinkedStack implements MyStack<String> {
 
     }
 
-    @Override
+
     public String toString() {
         StringBuffer stringBuffer = new StringBuffer();
         do {
@@ -60,13 +60,13 @@ public class LinkedStack implements MyStack<String> {
 
 
     private class Node {
-        String item;
+        T item;
         Node next;
     }
 
 
     public static void main(String[] args) {
-        LinkedStack linkedStack = new LinkedStack();
+        LinkedStack<String> linkedStack = new LinkedStack<>();
         String orignal[] = {"h", "l", "l", "o", "e"};
 
         for (String s : orignal) {

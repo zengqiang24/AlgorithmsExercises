@@ -5,12 +5,11 @@ package StackAndQueue;
  * FILO
  * Created by qiangzeng on 16/11/29.
  */
-public class ArrayCapitalStack implements MyStack<String> {
+public class ArrayCapitalStack {
     private int N;
     private String arrays[];
     private int captical = 1;
 
-    @Override
     public boolean isEmpty() {
         return arrays.length == 0;
     }
@@ -27,7 +26,6 @@ public class ArrayCapitalStack implements MyStack<String> {
         arrays = temp;
     }
 
-    @Override
 
     public String pop() {
         String item = arrays[--N];
@@ -36,11 +34,11 @@ public class ArrayCapitalStack implements MyStack<String> {
         return item;
     }
 
-    @Override
     public void push(String arg) {
         if (N != 0 && N == arrays.length) resize(2 * arrays.length);
         arrays[N++] = arg;
     }
+
 
     public static void main(String[] args) {
         ArrayCapitalStack arrayCapitalStack = new ArrayCapitalStack();
@@ -49,11 +47,11 @@ public class ArrayCapitalStack implements MyStack<String> {
         for (String s : orignal) {
             arrayCapitalStack.push(s);
         }
+        System.out.println(arrayCapitalStack.pop());
+        System.out.println(arrayCapitalStack.pop());
+        System.out.println(arrayCapitalStack.pop());
+        System.out.println(arrayCapitalStack.pop());
+        System.out.println(arrayCapitalStack.pop());
 
-        System.out.println(arrayCapitalStack.pop() );
-        System.out.println(arrayCapitalStack.pop() );
-        System.out.println(arrayCapitalStack.pop() );
-        System.out.println(arrayCapitalStack.pop() );
-        System.out.println(arrayCapitalStack.pop() );
     }
 }
