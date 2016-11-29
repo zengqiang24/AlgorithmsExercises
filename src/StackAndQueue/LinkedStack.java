@@ -1,11 +1,12 @@
 package StackAndQueue;
 
+import java.util.Iterator;
+
 /**
- *
  * linked-list stack
  * Created by qiangzeng on 16/11/28.
  */
-public class LinkedStack<T>  {
+public class LinkedStack<T> implements Iterable<T> {
     Node first = null;
 
     private int N;
@@ -40,7 +41,7 @@ public class LinkedStack<T>  {
         }
         Node oldFirst = first;
 
-        first= new Node();
+        first = new Node();
         first.item = item;
         first.next = oldFirst;
 
@@ -58,6 +59,30 @@ public class LinkedStack<T>  {
 
     }
 
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     */
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            Node current = first;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public T next() {
+                T item = first.item;
+                current = first.next;
+                return item;
+            }
+        };
+    }
+
 
     private class Node {
         T item;
@@ -73,6 +98,9 @@ public class LinkedStack<T>  {
             linkedStack.push(s);
         }
 
-        System.out.println(linkedStack);
+        for (String item : linkedStack) {
+            System.out.println(item);
+        }
+
     }
 }

@@ -1,11 +1,13 @@
 package StackAndQueue;
 
+import java.util.Iterator;
+
 /**
  * resize array of stack
  * FILO
  * Created by qiangzeng on 16/11/29.
  */
-public class ArrayCapitalStack<T> {
+public class ArrayCapitalStack<T> implements Iterable<T> {
     private int N;
     private T arrays[];
     private int captical = 1;
@@ -47,11 +49,30 @@ public class ArrayCapitalStack<T> {
         for (String s : orignal) {
             arrayCapitalStack.push(s);
         }
-        System.out.println(arrayCapitalStack.pop());
-        System.out.println(arrayCapitalStack.pop());
-        System.out.println(arrayCapitalStack.pop());
-        System.out.println(arrayCapitalStack.pop());
-        System.out.println(arrayCapitalStack.pop());
+        for (String item : arrayCapitalStack) {
+            System.out.println(item);
+        }
+    }
 
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     */
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private int i=N;
+
+            @Override
+            public boolean hasNext() {
+                return i > 0;
+            }
+
+            @Override
+            public T next() {
+                return arrays[--i];
+            }
+        };
     }
 }
