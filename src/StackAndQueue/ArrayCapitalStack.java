@@ -7,7 +7,7 @@ import java.util.Iterator;
  * FILO
  * Created by qiangzeng on 16/11/29.
  */
-public class ArrayCapitalStack<T> implements Iterable<T> {
+public class ArrayCapitalStack<T> implements IStack<T>, Iterable<T> {
     private int N;
     private T arrays[];
     private int captical = 1;

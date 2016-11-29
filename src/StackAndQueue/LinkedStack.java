@@ -6,7 +6,7 @@ import java.util.Iterator;
  * linked-list stack
  * Created by qiangzeng on 16/11/28.
  */
-public class LinkedStack<T> implements Iterable<T> {
+public class LinkedStack<T> implements IStack<T>,Iterable<T> {
     Node first = null;
 
     private int N;
