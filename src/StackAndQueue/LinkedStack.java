@@ -1,6 +1,8 @@
 package StackAndQueue;
 
 /**
+ *
+ * linked-list stack
  * Created by qiangzeng on 16/11/28.
  */
 public class LinkedStack implements MyStack<String> {
@@ -38,11 +40,9 @@ public class LinkedStack implements MyStack<String> {
         }
         Node oldFirst = first;
 
-        Node newNode = new Node();
-        newNode.item = item;
-        newNode.next = oldFirst;
-
-        first = newNode;
+        first= new Node();
+        first.item = item;
+        first.next = oldFirst;
 
         N++;
 
