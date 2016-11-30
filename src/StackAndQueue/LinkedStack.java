@@ -84,7 +84,7 @@ public class LinkedStack<T> implements IStack<T>,Iterable<T> {
     }
 
 
-    private class Node {
+    private   class Node {
         T item;
         Node next;
     }
