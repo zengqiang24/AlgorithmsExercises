@@ -52,6 +52,7 @@ public class ArrayCapitalStack<T> implements IStack<T>, Iterable<T> {
         for (String item : arrayCapitalStack) {
             System.out.println(item);
         }
+
     }
 
     /**
@@ -75,4 +76,5 @@ public class ArrayCapitalStack<T> implements IStack<T>, Iterable<T> {
             }
         };
     }
+
 }
