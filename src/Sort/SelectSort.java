@@ -5,7 +5,7 @@ import java.util.Comparator;
 /**
  * Created by qiangzeng on 16/12/8.
  */
-public class SelectSort implements ISort {
+public class SelectSort extends ISort {
 
     @Override
     public boolean less(Comparable v, Comparable w) {
@@ -35,13 +35,6 @@ public class SelectSort implements ISort {
         }
     }
 
-    @Override
-    public void show(Comparable[] a) {
-        for (Comparable comparable : a) {
-            System.out.print(comparable + " ");
-        }
-
-    }
 
     public static void main(String[] args) {
         String[] a = {"E", "A", "b", "C", "W", "I", "Q", "R"};

@@ -3,12 +3,26 @@ package Sort;
 /**
  * Created by qiangzeng on 16/12/8.
  */
-public interface ISort {
-    boolean less(Comparable v, Comparable w);
+public abstract class ISort {
 
-    void exch(Comparable[] a, int i, int j);
+    public boolean less(Comparable v, Comparable w) {
+        return v.compareTo(w) < 0;
+    }
 
-    void sort(Comparable[] a);
 
-    void show(Comparable[] a);
+    public void exch(Comparable[] a, int i, int j) {
+        Comparable t = a[i];
+        a[i] = a[j];
+        a[j] = t;
+    }
+
+    abstract void sort(Comparable[] a);
+
+
+    public void show(Comparable[] a) {
+        for (Comparable comparable : a) {
+            System.out.print(comparable + " ");
+        }
+
+    }
 }
