@@ -7,10 +7,6 @@ import java.util.Comparator;
  */
 public class SelectSort extends ISort {
 
-    @Override
-    public boolean less(Comparable v, Comparable w) {
-        return v.compareTo(w) < 0;
-    }
 
     @Override
     public void exch(Comparable[] a, int i, int j) {

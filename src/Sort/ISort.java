@@ -5,9 +5,10 @@ package Sort;
  */
 public abstract class ISort {
 
-    public boolean less(Comparable v, Comparable w) {
+    public static boolean less(Comparable v, Comparable w) {
         return v.compareTo(w) < 0;
     }
+
 
 
     public void exch(Comparable[] a, int i, int j) {
