@@ -2,6 +2,7 @@ package ProgrammingAssignment2;
 
 import edu.princeton.cs.algs4.StdRandom;
 
+import javax.naming.OperationNotSupportedException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -103,7 +104,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     public Item sample() {// return (but do not remove) a random item
 
-        int index = StdRandom.uniform(first,size());
+        int index = StdRandom.uniform(first, size());
 
         Item item = array[index];
         if (item == null) throw new NoSuchElementException();
@@ -124,6 +125,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
+
                 Item item = array[(i + first) % array.length];
                 i++;
                 return item;
