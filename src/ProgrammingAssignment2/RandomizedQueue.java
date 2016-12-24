@@ -135,21 +135,15 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         RandomizedQueue<Integer> randomizedQueue = new RandomizedQueue<>();
         randomizedQueue.enqueue(1);
         randomizedQueue.enqueue(2);
-
         randomizedQueue.enqueue(3);
-
         randomizedQueue.enqueue(4);
 
         for (Integer item : randomizedQueue) {
             System.out.print(" " + item);
         }
-
         System.out.println("----------");
-
-
         System.out.println("randomizedQueue.sample():" + randomizedQueue.sample());
         System.out.println("randomizedQueue.dequeue():" + randomizedQueue.dequeue());
-
         System.out.println("randomizedQueue.sample():" + randomizedQueue.sample());
         System.out.println("randomizedQueue.sample():" + randomizedQueue.sample());
         System.out.println("randomizedQueue.sample():" + randomizedQueue.sample());
@@ -157,8 +151,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         System.out.println("randomizedQueue.sample():" + randomizedQueue.sample());
         System.out.println("randomizedQueue.sample():" + randomizedQueue.sample());
         System.out.println("randomizedQueue.sample():" + randomizedQueue.sample());
-
-
         System.out.println("randomizedQueue.sample():" + randomizedQueue.sample());
         System.out.println("randomizedQueue.sample():" + randomizedQueue.sample());
 
