@@ -2,21 +2,20 @@ package ProgrammingAssignment2;
 
 import edu.princeton.cs.algs4.StdRandom;
 
-import javax.naming.OperationNotSupportedException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
  * Created by qiangzeng on 16/12/24.
  */
-public class RandomizedQueue<Item> implements Iterable<Item> {
+public class RandomizedQueueArray<Item> implements Iterable<Item> {
     private Item[] array;
     private int N;
     private int index;
     private int first;
     private int last;
 
-    public RandomizedQueue() {
+    public RandomizedQueueArray() {
         array = (Item[]) new Object[2];
     }
 
@@ -134,7 +133,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     public static void main(String[] args) {// unit testing
-        RandomizedQueue<Integer> randomizedQueue = new RandomizedQueue<>();
+        RandomizedQueueArray<Integer> randomizedQueue = new RandomizedQueueArray<>();
         randomizedQueue.enqueue(1);
         randomizedQueue.enqueue(2);
         randomizedQueue.enqueue(3);

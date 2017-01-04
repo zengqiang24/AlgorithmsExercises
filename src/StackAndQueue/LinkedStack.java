@@ -76,8 +76,8 @@ public class LinkedStack<T> implements IStack<T>,Iterable<T> {
 
             @Override
             public T next() {
-                T item = first.item;
-                current = first.next;
+                T item = current.item;
+                current = current.next;
                 return item;
             }
         };

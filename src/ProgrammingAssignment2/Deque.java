@@ -1,22 +1,21 @@
 package ProgrammingAssignment2;
 
-import edu.princeton.cs.algs4.StdIn;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 /**
- * Created by qiangzeng on 16/12/24.
+ * Created by qiangzeng on 16/12/28.
  */
 public class Deque<Item> implements Iterable<Item> {
-    private Item[] array;
-    private int last;
-    private int first;
-    private int N;
+    public Node<Item> first;
+    public Node<Item> last;
+    public int N;
 
-    public Deque() { // construct an empty deque
-        array = (Item[]) new Object[1];
+    public Deque() {
+
     }
+
 
     public boolean isEmpty() {
         return N > 0 ? false : true;
@@ -29,137 +28,107 @@ public class Deque<Item> implements Iterable<Item> {
     }
 
     public void addFirst(Item item) { // add the item to the front
-        if (item == null) {
-            throw new NullPointerException();
-        }
-        if (N == array.length) resize(array.length * 2);
-
-        if (N > 0) {
-            Item[] temp = (Item[]) new Object[array.length + 1];
-            for (int i = 0; i < N; i++) {
-                temp[i + 1] = array[(first + i) % array.length];
-            }
-            temp[first] = item;
-            array = temp;
+        if (first == null) {
+            Node<Item> first = new Node<>();
+            first.item = item;
+            first.next = null;
+            this.first = first;
+            this.last = first;
         } else {
-            array[first] = item;
-        }
+            Node<Item> temp = this.first;
+            Node<Item> newNode = new Node<>();
+            newNode.item = item;
+            newNode.next = temp;
+            temp.parent = newNode;
+            this.first = newNode;
 
-        N ++;
-        last=N;
+        }
+        N++;
+
     }
 
     public void addLast(Item item) { // add the item to the end
-        if (item == null) {
-            throw new NullPointerException();
-        }
-        if (N == array.length) resize(array.length * 2);
-        array[last] = item;
+        Node<Item> newLast = new Node<>();
+        Node<Item> oldlast = last;
+
+        newLast.item = item;
+        newLast.parent = oldlast;
+        oldlast.next = newLast;
+
+        this.last = newLast;
         N++;
-        last=N;
 
-    }
-    public int getLength(){
-        return array.length;
-    }
-
-    private void resize(int length) {
-        Item[] temp = (Item[]) new Object[length];
-        for (int i = 0; i < N; i++) {
-            temp[i] = array[(first + i) % array.length];
-        }
-        array = temp;
-        first = 0;
-        last = N;
     }
 
     public Item removeFirst() { // remove and return the item from the front
-        Item item = array[first];
-        if (item == null) {
-            throw new NoSuchElementException();
-        }
-        array[first] = null;
-        first++;
+        Node<Item> oldFirst = first;
+        first = first.next;
         N--;
-        subSize();
-        return item;
+        return oldFirst.item;
 
     }
 
-    private void subSize() {
-        if (N == array.length / 4) {
-            resize(array.length / 2);
-        }
-    }
 
     public Item removeLast() { // remove and return the item from the end
-        Item item = array[last-1];
-        if (item == null) {
-            throw new NoSuchElementException();
+        Item item = last.item;
+        Node<Item> temp;
+        temp = first;
+        while (temp.next != null) {
+            temp = temp.next;
+
         }
-        array[last-1] = null;
-        N--;
-        last=N;
-        subSize();
+
         return item;
     }
 
-    public Iterator<Item> iterator() {// return an iterator over items in order from front to end
+    private static class Node<Item> {
+        Item item;
+        Node parent;
+        Node next;
+    }
+
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     */
+    @Override
+    public Iterator<Item> iterator() {
         return new Iterator<Item>() {
-            int i;
+            Node<Item> curent = first;
 
             @Override
             public boolean hasNext() {
-                return i <N ? true : false;
+                return curent != null;
             }
 
             @Override
             public Item next() {
-                if (!hasNext()) {
-                    throw new NoSuchElementException();
-                }
-                Item item = array[(i + first) % array.length];
-                i++;
+                Item item = curent.item;
+                curent = curent.next;
                 return item;
             }
         };
     }
 
-    public static void main(String[] args) { // unit testing
-        Deque<Integer> deque = new Deque<>();
-        deque.addLast(3);
-        deque.addFirst(1);
-        deque.removeLast();
-        deque.addFirst(0);
-        deque.addFirst(11);
-        deque.addLast(6);
-        deque.addLast(99);
-        deque.addLast(8);
-        deque.addFirst(10);
+    public static void main(String[] args) {
+        Deque<String> strings = new Deque<>();
+        strings.addFirst("1");
+        strings.addFirst("2");
+        strings.addFirst("3");
+        strings.addFirst("4");
+        strings.addFirst("5");
+        strings.addLast("6");
+        strings.removeFirst();
+        strings.removeFirst();
+        strings.addFirst("7");
+        for (String string : strings) {
 
-
-        for (Integer integer : deque) {
-            System.out.print(integer + " ");
+            System.out.println("node:" + string);
         }
-        System.out.println("------");
-
-        System.out.println(" deque.removeLast()" + deque.removeLast());
-        ;
-//        System.out.println(" deque.removeFirst()" + deque.removeFirst()); ;
-//        System.out.println(" deque.removeFirst()" + deque.removeFirst()); ;
+        System.out.println(strings.size());
 
 
-//        System.out.println(" deque.removeFirst()" + deque.removeFirst());
-//        deque.removeFirst();
-
-
-        for (Integer integer : deque) {
-            System.out.print(integer + " ");
-        }
-        System.out.println("------");
-        System.out.println("firstmain:" + deque.first);
-        System.out.println("lastmain:" + deque.last);
-        System.out.println("array.length:" + deque.getLength());
-        System.out.println("deque.size:" + deque.size());
     }
+
 }
