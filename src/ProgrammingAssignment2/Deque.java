@@ -62,22 +62,20 @@ public class Deque<Item> implements Iterable<Item> {
 
     public Item removeFirst() { // remove and return the item from the front
         Node<Item> oldFirst = first;
+        Item item = oldFirst.item;
         first = first.next;
-        N--;
-        return oldFirst.item;
+         N--;
+        oldFirst=null;
+        return item;
 
     }
 
 
     public Item removeLast() { // remove and return the item from the end
-        Item item = last.item;
-        Node<Item> temp;
-        temp = first;
-        while (temp.next != null) {
-            temp = temp.next;
-
-        }
-
+        Item item = this.last.item;
+        this.last = this.last.parent;
+        this.last.next=null;
+         N--;
         return item;
     }
 
@@ -117,11 +115,11 @@ public class Deque<Item> implements Iterable<Item> {
         strings.addFirst("2");
         strings.addFirst("3");
         strings.addFirst("4");
+        strings.removeLast();
         strings.addFirst("5");
-        strings.addLast("6");
-        strings.removeFirst();
-        strings.removeFirst();
         strings.addFirst("7");
+        strings.addLast("6");
+
         for (String string : strings) {
 
             System.out.println("node:" + string);
