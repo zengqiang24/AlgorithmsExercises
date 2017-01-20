@@ -1,24 +1,26 @@
 package ProgrammingAssignment2;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
 import java.util.*;
 
 /**
  * Created by qiangzeng on 16/12/28.
  */
 public class Deque<Item> implements Iterable<Item> {
-    public Node<Item> first;
-    public Node<Item> last;
-    public int N;
+    private Node<Item> first;
+    private Node<Item> last;
+    private int N;
 
     public Deque() {
-
+        Node<Item> first = new Node<>();
+        first.item = null;
+        first.next = null;
+        this.first = first;
+        this.last = first;
     }
 
 
     public boolean isEmpty() {
-        return N > 0 ? false : true;
+        return N <= 0;
     }
 
 
@@ -28,13 +30,10 @@ public class Deque<Item> implements Iterable<Item> {
     }
 
     public void addFirst(Item item) { // add the item to the front
-        if (first == null) {
-            Node<Item> first = new Node<>();
-            first.item = item;
-            first.next = null;
-            this.first = first;
-            this.last = first;
-        } else {
+        if (item == null) {
+            throw new NullPointerException();
+        }
+
             Node<Item> temp = this.first;
             Node<Item> newNode = new Node<>();
             newNode.item = item;
@@ -42,18 +41,21 @@ public class Deque<Item> implements Iterable<Item> {
             temp.parent = newNode;
             this.first = newNode;
 
-        }
+
         N++;
 
     }
 
     public void addLast(Item item) { // add the item to the end
+        if (item == null) {
+            throw new NullPointerException();
+        }
         Node<Item> newLast = new Node<>();
-        Node<Item> oldlast = last;
+        Node<Item> oldLast = last;
 
         newLast.item = item;
-        newLast.parent = oldlast;
-        oldlast.next = newLast;
+        newLast.parent = oldLast;
+        oldLast.next = newLast;
 
         this.last = newLast;
         N++;
@@ -73,6 +75,9 @@ public class Deque<Item> implements Iterable<Item> {
 
     public Item removeLast() { // remove and return the item from the end
         Item item = this.last.item;
+        if (item == null) {
+            throw new NoSuchElementException();
+        }
         this.last = this.last.parent;
         this.last.next=null;
          N--;
@@ -81,8 +86,8 @@ public class Deque<Item> implements Iterable<Item> {
 
     private static class Node<Item> {
         Item item;
-        Node parent;
-        Node next;
+        Node<Item> parent;
+        Node<Item> next;
     }
 
     /**
