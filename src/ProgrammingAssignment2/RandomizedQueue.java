@@ -10,18 +10,18 @@ import java.util.NoSuchElementException;
  */
 public class RandomizedQueue<Item> implements Iterable<Item> {
     private Node<Item> last;
-    private int N;
+    private int n;
 
     public RandomizedQueue() {
 
     }
 
     public boolean isEmpty() {
-        return N <= 0;
+        return n <= 0;
     }
 
     public int size() {
-        return N;
+        return n;
     }
 
     public void enqueue(Item item) {
@@ -38,7 +38,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         newLast.parent = oldlast;
         oldlast.next = newLast;
         this.last = newLast;
-        N++;
+        n++;
     }
 
 
@@ -86,7 +86,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     public Iterator<Item> iterator() {
         return new Iterator<Item>() {
-            Node<Item> curent = last;
+            private Node<Item> curent = last;
 
             @Override
             public boolean hasNext() {
@@ -97,6 +97,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             public Item next() {
                 Item item = curent.item;
                 curent = curent.parent;
+                if (item == null) {
+                    throw new NoSuchElementException();
+                }
                 return item;
             }
         };
@@ -104,29 +107,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
 
     private static class Node<Item> {
-        Item item;
-        Node<Item> parent;
-        Node<Item> next;
-    }
-
-    public static void main(String[] args) {// unit testing
-        RandomizedQueue<Integer> randomizedQueue = new RandomizedQueue<>();
-        randomizedQueue.enqueue(1);
-        randomizedQueue.enqueue(2);
-        randomizedQueue.enqueue(3);
-        randomizedQueue.enqueue(4);
-
-        for (Integer item : randomizedQueue) {
-            System.out.print("  " + item);
-        }
-        System.out.println("");
-
-        System.out.println("----------");
-        System.out.println("randomizedQueue.sample():" + randomizedQueue.dequeue());
-
-
-        for (Integer item : randomizedQueue) {
-            System.out.print("  " + item);
-        }
+        private Item item;
+        private Node<Item> parent;
+        private Node<Item> next;
     }
 }

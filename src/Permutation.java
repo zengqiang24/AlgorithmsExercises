@@ -1,5 +1,3 @@
-package ProgrammingAssignment2;
-
 import edu.princeton.cs.algs4.StdIn;
 
 /**
@@ -16,7 +14,7 @@ public class Permutation {
         randomizedQueue.enqueue(s3);
         String s4 = StdIn.readString();
         randomizedQueue.enqueue(s4);
-        int k ;
+        int k;
         k = StdIn.readInt();
         for (int i = 0; i < k; i++) {
             System.out.println(randomizedQueue.sample());
