@@ -18,7 +18,9 @@ public class MergeSort extends ISort {
         int mid = lo + (hi - lo) / 2;
         System.out.println(lo + " " + mid + " " + hi);
         sort(a, lo, mid);       // Sort left half.
+        System.out.println("pre merge"+"lo:"+lo+"mid:"+mid+"hi:"+hi);
         sort(a, mid + 1, hi);     // Sort right half.
+        System.out.println("merge"+"lo:"+lo+"mid:"+mid+"hi:"+hi);
         merge(a, lo, mid, hi);  // Merge results (code on page 271).
     }
 

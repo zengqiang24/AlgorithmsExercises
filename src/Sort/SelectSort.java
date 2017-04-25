@@ -34,6 +34,7 @@ public class SelectSort extends ISort {
 
     public static void main(String[] args) {
         String[] a = {"E", "A", "b", "C", "W", "I", "Q", "R"};
+        assert  false;
         SelectSort selectSort = new SelectSort();
         selectSort.sort(a);
         selectSort.show(a);
