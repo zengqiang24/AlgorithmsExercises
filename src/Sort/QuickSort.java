@@ -27,7 +27,6 @@ public class QuickSort extends ISort {
 
         while (true){
             while (less(a[++i],v)){
-
             }
             while (less( v,a[--j])){}
             if (i>=j)break;
