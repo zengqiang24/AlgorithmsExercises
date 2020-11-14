@@ -5,6 +5,7 @@ package Sort;
  */
 public class QuickSort extends ISort {
 
+
     @Override
     void sort(Comparable[] a) {
         sort(a, 0, a.length - 1);

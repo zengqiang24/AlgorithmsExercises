@@ -28,7 +28,6 @@ public class QuickFind extends Quick {
 
     @Override
     int find(int p) {
-
         return ids[p];
     }
 

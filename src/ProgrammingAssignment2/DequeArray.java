@@ -2,6 +2,7 @@ package ProgrammingAssignment2;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Stack;
 
 /**
  * Created by qiangzeng on 16/12/24.
@@ -159,5 +160,8 @@ public class DequeArray<Item> implements Iterable<Item> {
         System.out.println("lastmain:" + deque.last);
         System.out.println("array.length:" + deque.getLength());
         System.out.println("deque.size:" + deque.size());
+        Stack<Integer> integers = new Stack<>();
+        integers.peek();
+
     }
 }

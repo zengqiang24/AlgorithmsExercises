@@ -6,18 +6,19 @@ package UnionFind;
 public class QuickUnion extends Quick {
     private int size[];
     private int maxRoots[];
-    private  int minRoots[];
+    private int minRoots[];
+
     public QuickUnion(int N) {
         super(N);
         size = new int[N];
         for (int i = 0; i < N; i++) {
             size[i] = 1;
         }
-         maxRoots=new int[count];
+        maxRoots = new int[count];
         for (int i = 0; i < N; i++) {
             maxRoots[i] = i;
         }
-        minRoots=new int[count];
+        minRoots = new int[count];
         for (int i = 0; i < N; i++) {
             minRoots[i] = i;
         }
@@ -37,15 +38,14 @@ public class QuickUnion extends Quick {
             size[rq] += size[rp];
         }
 
-        if(p<q){
-            maxRoots[ids[rq]]=q;
-            minRoots[ids[rq]]=p;
-        }else{
-            maxRoots[ids[rq]]=p;
-            minRoots[ids[rq]]=q;
+        if (p < q) {
+            maxRoots[ids[rq]] = q;
+            minRoots[ids[rq]] = p;
+        } else {
+            maxRoots[ids[rq]] = p;
+            minRoots[ids[rq]] = q;
         }
         count--;
-
     }
 
     @Override
@@ -53,18 +53,11 @@ public class QuickUnion extends Quick {
         return root(p) == root(q);
     }
 
-
     private int root(int i) {
-
         while (i != ids[i]) {
-
             ids[i] = ids[ids[i]];
-
             i = ids[i];
-
         }
-
-
         return i;
     }
 
@@ -73,15 +66,16 @@ public class QuickUnion extends Quick {
         return root(i);
     }
 
-    public  int findMax(int i){
+    public int findMax(int i) {
         int root = root(i);
         return maxRoots[root];
     }
 
-    public  int findMin(int i){
+    public int findMin(int i) {
         int root = root(i);
         return minRoots[root];
     }
+
     public static void main(String[] args) {
         QuickUnion quickUnion = new QuickUnion(10);
         if (!quickUnion.connection(1, 4)) {
