@@ -1,20 +1,24 @@
+import java.util.Arrays;
+
 public class Maopao {
-    public void sort(int[] arrays){
-        for (int i=0; i< arrays.length;i++){
-            for (int j=i; j<arrays.length;j++){
-                int max = arrays[i];
-                if (max<arrays[j]){
-                   max = arrays[j];
+   static int arr[] = {4,5,3,1,9,2};
+    public void sort( ){
+        for (int i=1; i< arr.length;i++){
+            for (int j=0; j<arr.length-1;j++){
+                if (arr[j]>arr[j+1]){
+                    swap(arr,j,j+1);
                 }
-                arrays[i] = max;
-            }
+             }
         }
+    }
+    public void swap(int[] arr, int i, int j){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
     public static void main(String[] args) {
         Maopao maopao = new Maopao();
-        int arr[] = {4,5,3,1,2,9};
-        maopao.sort(arr);
-        System.out.println(arr[0]);
-        System.out.println(arr[5]);
-    }
+        maopao.sort( );
+        System.out.println(Arrays.toString(arr));
+     }
 }

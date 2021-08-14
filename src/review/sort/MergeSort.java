@@ -9,7 +9,7 @@ public class MergeSort extends ISort {
         int i = lo;
         int j = mid + 1;
 
-        //3.合并数组，注意i，j的边界大小
+        //3.把辅助数组更新到原数组里面，合并数组，注意i，j的边界大小
         for (int k = lo; k <= hi; k++) {
             if (i > mid) {
                 array[k] = aux[j++];//j<=k<=hi

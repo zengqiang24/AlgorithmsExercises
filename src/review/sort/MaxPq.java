@@ -8,19 +8,19 @@ import java.util.NoSuchElementException;
  * @param <Key> 队列内需要排序和比较的元素
  */
 public class MaxPq<Key extends Comparable> {
-    private static final int MAX = 5;
+    private static  int MAX = 0;
     private int N = 0;
     private Key[] pq = null;
 
     public MaxPq(int count) {
-        N = count;
-        pq = (Key[]) new Comparable[N + 1];
+        MAX = count;
+        pq = (Key[]) new Comparable[MAX + 1];
     }
 
     private void sink(int k) {
-        while (2 * k <= N) { //还没达到最底部的右节点。 最底部右节点是2K+1 = N
+        while (2 * k <= N) { //从左子节点开始检测
             int j = 2 * k;
-            if (j < N && less(j, j + 1)) j++;
+            if (j < N && less(j, j + 1)) j++;  //如果左子节点小于右子节点，则取右子节点比较
             if (!less(k, j)) break;
             exch(k, j);
             k = j;
@@ -30,7 +30,7 @@ public class MaxPq<Key extends Comparable> {
     private void swim(int k) {
         while (k > 1 && !less(k, k / 2)) { //如果没有到达最顶部的root节点，而且子节点不小于根结点，那么继续上浮。
             exch(k, k / 2);//因为子节点不小于父节点，所以需要交换内容，来上浮。
-            k = k / 2; //更新索引，继续向下检查是否要上浮。
+            k = k / 2; //更新索引，继续向上右节点是2K+1 = N检查是否要上浮。
         }
     }
 
@@ -57,7 +57,7 @@ public class MaxPq<Key extends Comparable> {
     }
 
     public void insert(Key key) {
-        if (pq.length>=MAX){
+        if (N>=MAX){
             delMin();
         }
         pq[++N] = key;
@@ -68,4 +68,10 @@ public class MaxPq<Key extends Comparable> {
         pq[N--] = null;
     }
 
+    public void show(){
+        for (int i = 1; i <= MAX; i++) {
+            System.out.print(pq[i]+" ");
+
+        }
+    }
 }
