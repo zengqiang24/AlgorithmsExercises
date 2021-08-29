@@ -1,3 +1,5 @@
+package binarysearch
+
 class BinarySearch {
     fun sort(x: Int, a: IntArray): Int {
         if (a.isEmpty()) {
