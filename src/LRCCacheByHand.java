@@ -20,6 +20,7 @@ public class LRCCacheByHand {
         LinkedNode linkedNode1 = hashMap.get(key);
         if (linkedNode1 == null) {
             linkedNode1 = new LinkedNode(key, value);
+            hashMap.put(key, linkedNode1);
             addToHead(linkedNode1);
             ++size;
             if (size > capacity) {
@@ -28,6 +29,7 @@ public class LRCCacheByHand {
                 --size;
             }
         } else {
+            linkedNode1.val = value;//update its value if map contained it.
            moveToHead(linkedNode1);
         }
     }
