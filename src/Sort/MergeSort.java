@@ -42,5 +42,39 @@ public class MergeSort extends ISort {
         MergeSort mMergeSort = new MergeSort();
         mMergeSort.sort(a);
         mMergeSort.show(a);
+        //2,1,2
+        int ans = 2 ^ 1;
+          ans = ans ^ 2;
+
+        System.out.println(("ans = " + ans));
+    }
+
+    private void merge1(int[] aux, int[] array, int lo, int mid, int hi) {
+        //aux:3,1,5,1,3
+        //array : 1,3,1,5,4
+        for(int i = lo; i <= hi; i++) {
+            aux[i] = array[i];
+        }
+        //合并数组
+        int i = lo;
+        int j = mid + 1;
+        int k = i;
+        while(k <= hi) {
+            if(aux[i] > mid) array[k] = aux[j++];
+            else if(aux[j] >hi ) array[k] = aux[i++];
+            else if(aux[i] < aux[j]) array[k] = aux[i++];
+            else array[k] = aux[j--];
+            k++;
+        }
+        //
+    }
+    private void sort(int[] aux, int[] array, int lo, int hi) {
+        if(lo >= hi) {
+            return;
+        }
+        int mid = lo + (hi - lo) /2;
+        sort(aux,array, lo, mid - 1);
+        sort(aux, array, mid + 1, hi);
+        merge1(aux, array, lo,mid, hi);
     }
 }

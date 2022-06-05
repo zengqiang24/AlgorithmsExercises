@@ -17,7 +17,7 @@ public class HeapSort2 {
         if (c2 < n && arr[c2] > arr[max]) {
             max = c2;
         }
-        if (arr[max] != arr[i]) {
+        if (max != i) {
             swap(arr, max, i);
             heapify(arr, n, max);
         }
