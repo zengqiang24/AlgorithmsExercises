@@ -12,13 +12,14 @@ fun main() {
     val nums2 = intArrayOf(3,2,3,1,2,4,5,5,6)
     val nums3 = intArrayOf(2,1)
     val nums4 = intArrayOf(1,2,3,4,5,6)
-
+    val nums7 = intArrayOf(99,99)
+    val nums5 = intArrayOf(3,1,2,4)
     val k = 2
     val k2 = 4
     val k3 = 1
     val k4 = 2
-    val result = findKthLargest.findKthLargest(nums4, k3)
-    println("nums =  ${nums3.contentToString()}")
+    val result = findKthLargest.findKthLargest(nums7, k3)
+    println("nums =  ${nums7.contentToString()}")
     println("result = $result")
 }
 
@@ -39,22 +40,25 @@ class FindKthLargest {
     }
 
     private fun partition(left: Int, right: Int, nums: IntArray): Int {
-        var p = left
+        if(left >= right) {
+            return left
+        }
+        var v = nums[left]
         var i = left
         var j = right + 1
         while (true) {
-            while (nums[i++] < nums[p]) {
-                if (i > right) break
+            while (nums[++i] <= v) {
+                if (i == right) break
             }
 
-            while (nums[--j] > nums[p]) {
-                if (j <= left) break
+            while (v <= nums[--j]) {
+                if (j == left) break
             }
 
             if (i >= j) break
             exch(i, j, nums)
         }
-        exch(p, j, nums)
+        exch(left, j, nums)
         return j
     }
 

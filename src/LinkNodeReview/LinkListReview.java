@@ -3,6 +3,7 @@ package LinkNodeReview;
 import binarysearch.ListNode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LinkListReview {
@@ -13,8 +14,9 @@ public class LinkListReview {
         l1.next = new ListNode(2);
         l1.next.next = new ListNode(4);
 
-        ListNode newNode = getKthFromEnd(l1, 2);
-        System.out.print("newNode" + newNode.val);
+         int[] res=  reversePrint(l1);
+        System.out.print("res = " + Arrays.toString(res));
+
     }
 
     public static ListNode reverseByTraverse(ListNode head) {
@@ -32,7 +34,7 @@ public class LinkListReview {
     }
 
     public static int[] reversePrint(ListNode head) {
-        recursion2(head, head);
+        recur(head);
         int[] result = new int[tmp.size()];
         for (int i = 0; i < tmp.size(); i++) {
             result[i] = tmp.get(i).val;
@@ -40,6 +42,8 @@ public class LinkListReview {
         return result;
     }
 
+
+    ///*****?
     public static void recur(ListNode node) {
         //递归的出口总是想不出来？
         if (node == null) {

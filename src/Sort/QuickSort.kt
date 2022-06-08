@@ -2,7 +2,7 @@ package Sort
 
 //
 fun main() {
-    var nums = arrayOf(2, 1, 4, 6, 3, 2, 9, 9)
+    var nums = arrayOf(99,99)
     sort(0, nums.size-1, nums, 0)
     print("sorted nums = ${nums.contentToString()}")
 }

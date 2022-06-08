@@ -1,2 +1,4 @@
-# AlgorithmsExercises
-Daily algorithm practice.
+# 算法练习
+跟踪日常编程算法题的代码和总结。
+# 目的
+通过深入理解不同的数据结构和算法的特征和适用场景，提升思维能力。
