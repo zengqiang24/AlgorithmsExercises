@@ -1,7 +1,5 @@
 package tree;
 
-import edu.princeton.cs.algs4.In;
-
 import java.util.*;
 
 public class TreeReview {

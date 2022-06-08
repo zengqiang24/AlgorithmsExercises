@@ -3,11 +3,11 @@ package Recursion;
 import java.util.ArrayList;
 import java.util.List;
 
-class Solution {
+class CountSmaller {
     public static void main(String[] args) {
-        Solution solution = new Solution();
+        CountSmaller countSmaller = new CountSmaller();
         int[] nums = {8, 5, 2, 9, 3, 10};
-        List<Integer> integers = solution.countSmaller(nums);
+        List<Integer> integers = countSmaller.countSmaller(nums);
         for (Integer integer : integers) {
             System.out.print(" " + integer);
         }
