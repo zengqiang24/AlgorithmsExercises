@@ -6,7 +6,7 @@ fun main() {
 
 class ReversePair {
     fun reversePairs() {
-        val nums = intArrayOf(8, 1, 3, 4, 5, 0)
+        val nums = intArrayOf(2,4,3,5,1)
         val aux = IntArray(nums.size)
         val count = mergeSort(nums, 0, nums.size - 1, aux)
         print("count = $count")
@@ -27,7 +27,7 @@ class ReversePair {
          while (i <= mid ) {
             //[1, 3, 8] [0, 4, 5]
             //
-            while (j <= hi && nums[i] > 2 * nums[j]) {
+            if (j <= hi && nums[i] > 2 * nums[j]) {
                 ret += (mid - i + 1)
                 j++
             }
@@ -50,22 +50,26 @@ class ReversePair {
         var j = mid + 1
         while (i <= mid && j <= hi) {
             if (aux[i] <= aux[j]) {
-                nums[i] = aux[i]
+                nums[k] = aux[i]
                 i++
+                k++
             } else {
-                nums[i] = aux[j]
+                nums[k] = aux[j]
                 j++
+                k++
             }
         }
 
-        while (i < mid) {
-            nums[i] = aux[i]
+        while (i <= mid) {
+            nums[k] = aux[i]
             i++
+            k++
         }
 
-        while (j < hi) {
-            nums[j] = aux[j]
-            i++
+        while (j <= hi) {
+            nums[k] = aux[j]
+            j++
+            k++
         }
     }
 }
