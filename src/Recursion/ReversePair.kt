@@ -25,11 +25,15 @@ class ReversePair {
         var j = mid + 1
         while (i <= mid) {
             //[2, 3, 8] [0, 1, 5]
+
+            //move j to the left util meet nums[i] <= 2 * nums[j]
             while (j <= hi && nums[i].toLong() > 2 * (nums[j] .toLong())) {
                 j++
             }
+            // [2,0][2, 1] are reverse pair.
             ret += j - mid - 1
-            i++
+
+            i++ // continue to move point i to the right.
         }
         //merge those array
         merge(nums, lo, mid, hi, aux)
