@@ -1,19 +1,18 @@
 package Recursion
-
 fun main() {
-  ReversePair().reversePairs()
+    ReversePair().reversePairs()
 }
 
 class ReversePair {
     fun reversePairs() {
-        val nums = intArrayOf(2,4,3,5,1)
+        val nums = intArrayOf(2147483647,2147483647,-2147483647,-2147483647,-2147483647,2147483647)
         val aux = IntArray(nums.size)
         val count = mergeSort(nums, 0, nums.size - 1, aux)
         print("count = $count")
     }
 
     fun mergeSort(nums: IntArray, lo: Int, hi: Int, aux: IntArray): Int {
-        if(lo >= hi) {
+        if(lo == hi) {
             return 0
         }
         val mid = lo + (hi - lo) / 2
@@ -24,13 +23,12 @@ class ReversePair {
         //cal amount of reverse pair between left array and right array.
         var i = lo
         var j = mid + 1
-         while (i <= mid ) {
-            //[1, 3, 8] [0, 4, 5]
-            //
-            if (j <= hi && nums[i] > 2 * nums[j]) {
-                ret += (mid - i + 1)
+        while (i <= mid) {
+            //[2, 3, 8] [0, 1, 5]
+            while (j <= hi && nums[i].toLong() > 2 * (nums[j] .toLong())) {
                 j++
             }
+            ret += j - mid - 1
             i++
         }
         //merge those array
