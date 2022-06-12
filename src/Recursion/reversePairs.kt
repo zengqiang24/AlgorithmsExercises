@@ -1,5 +1,8 @@
 package Recursion
 
+/**
+ * 求逆序对
+ */
 fun main() {
     var nums = intArrayOf(7, 5, 6, 4)
     val count = reversePairs(nums)

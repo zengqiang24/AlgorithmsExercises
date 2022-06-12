@@ -3,6 +3,9 @@ package Recursion;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 统计比右侧小的数
+ */
 class CountSmaller {
     public static void main(String[] args) {
         CountSmaller countSmaller = new CountSmaller();

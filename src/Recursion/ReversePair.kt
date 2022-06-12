@@ -1,4 +1,8 @@
 package Recursion
+
+/**
+ * 求翻转对
+ */
 fun main() {
     ReversePair().reversePairs()
 }

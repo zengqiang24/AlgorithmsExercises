@@ -2,6 +2,10 @@ package Recursion
 
 import binarysearch.ListNode
 
+
+/**
+ * 求翻转链表
+ */
 fun main() {
  var list = generateInputList()
     println("input:")

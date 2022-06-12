@@ -1,5 +1,8 @@
 package Recursion;
 
+/**
+ * 求第k大的数，用最大堆。
+ */
 public class KthLargestViaHeapify {
     public static void main(String[] args) {
         KthLargestViaHeapify kthLargestHeapify = new KthLargestViaHeapify();
