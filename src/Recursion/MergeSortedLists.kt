@@ -7,30 +7,14 @@ import binarysearch.ListNode
  *  输出：[1,1,2,3,4,4]
  */
 fun main() {
-    val list1 = generateList1()
-    var list2 = generateList2()
+    val list1 = generateInputList()
+    var list2 = generateInputList2()
     val mergedSortedList = MergeSortedLists().mergeTwoLists(list1, list2)
 
     printListNode(mergedSortedList)
 }
 
-fun generateList2(): ListNode? {
-    var list = ListNode(1)
-    var node2 = ListNode(3)
-    var node3 = ListNode(4)
-    list.next = node2
-    node2.next = node3
-    return list
-}
 
-private fun generateList1(): ListNode {
-    var list1 = ListNode(1)
-    var node2 = ListNode(2)
-    var node3 = ListNode(4)
-    list1.next = node2
-    node2.next = node3
-    return list1
-}
 
 class MergeSortedLists {
     /**
