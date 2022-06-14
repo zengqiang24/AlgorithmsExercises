@@ -30,3 +30,15 @@ fun generateInputList(): ListNode {
     node2.next = node3
     return list1
 }
+
+fun generateInputList3(): ListNode? {
+    var list = ListNode(1)
+    var node2 = ListNode(3)
+    var node3 = ListNode(4)
+    var node4 = ListNode(5)
+
+    list.next = node2
+    node2.next = node3
+    node3.next = node4
+    return list
+}
