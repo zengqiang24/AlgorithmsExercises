@@ -3,7 +3,7 @@ package Recursion
 import binarysearch.ListNode
 
 fun main() {
-    printListNode(RemoveElements().removeElements(generateInputList(), 2))
+    printListNode(RemoveElements().removeElementsByRecursive(generateInputList(), 2))
 }
 
 class RemoveElements {
@@ -20,5 +20,23 @@ class RemoveElements {
             }
         }
         return dummyNode.next //返回哑节点第二个元素。
+    }
+
+    /**
+     * 递归删除链表节点
+     *
+     * 对于给定的链表，首先对除了head以外的节点进行删除操作，然后判断head的节点值是否等于给定值val。
+     * 如果head等于val，则删除head节点，返回head.next, 否则，删除操作后的头节点还是head，于是返回head节点。
+     * 上述过程是一个递归过程
+     * 边界条件是head 等于 空。
+     */
+    fun removeElementsByRecursive(head: ListNode?, `val`: Int): ListNode? {
+        if(head == null) return head
+        head?.next = removeElementsByRecursive(head?.next, `val`)
+        return if (head ?.`val` == `val`) {
+            head?.next
+        } else {
+          head
+        }
     }
 }
