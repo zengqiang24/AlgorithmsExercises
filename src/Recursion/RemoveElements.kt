@@ -3,7 +3,7 @@ package Recursion
 import binarysearch.ListNode
 
 fun main() {
-    printListNode(RemoveElements().removeElementsByRecursive(generateInputList(), 2))
+    printListNode(RemoveElements().removeElements3(generateInputList(), 2))
 }
 
 class RemoveElements {
@@ -37,6 +37,17 @@ class RemoveElements {
             head?.next
         } else {
           head
+        }
+    }
+
+    fun removeElements3(head: ListNode?, `val`: Int): ListNode? {
+        if(head == null) return head
+        head?.next = removeElements3(head?.next, `val`)
+        return if(head ?.`val` == `val`) {
+            println("head?.val = ${head?.`val`}")
+             head?.next // 返回给上一帧链接， 即pre.next = head.next
+        } else {
+             head
         }
     }
 }
