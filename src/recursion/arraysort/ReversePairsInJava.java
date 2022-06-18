@@ -1,4 +1,4 @@
-package Recursion;
+package recursion.arraysort;
 
 
 public class ReversePairsInJava {

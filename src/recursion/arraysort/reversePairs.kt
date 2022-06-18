@@ -1,4 +1,4 @@
-package Recursion
+package recursion
 
 /**
  * 求逆序对

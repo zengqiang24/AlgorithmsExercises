@@ -1,5 +1,8 @@
-package Recursion
+package recursion.arraysort
 
+import recursion.generateInputList
+import recursion.generateInputList2
+import recursion.printListNode
 import binarysearch.ListNode
 
 /**合并两个已排序的链表
