@@ -20,10 +20,10 @@ class PruneTree {
         //明确调用单元： 左子树为空，右子树为空，当前为0，则剪枝。
         root?.left = pruneTree(root.left)
         root?.right = pruneTree(root.right)
-        if (root?.`val` == 0 && root?.left == null && root?.right == null) {
-            return null
+        return if (root?.`val` == 0 && root?.left == null && root?.right == null) {
+            null
         } else {
-            return root  //返回剪辑后的节点
+            root  //返回剪辑后的节点
         }
     }
 }
