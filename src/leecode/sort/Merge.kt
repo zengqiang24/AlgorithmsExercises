@@ -1,5 +1,6 @@
 package leecode.sort
 
+import binarysearch.ListNode
 import java.util.*
 
 /**
@@ -20,13 +21,19 @@ import java.util.*
 fun main() {
     //[[1,3],[2,6],[8,10],[15,18]]
     var interval = arrayOf(intArrayOf(1, 3), intArrayOf(2, 6), intArrayOf(8, 10), intArrayOf(15, 18))
-    val mergedList = Merge().merge2(interval)
+    val mergedList = Merge().merge(interval)
     for (ints in mergedList) {
         println("[${ints[0]},${ints[1]}]")
     }
 }
 
 class Merge {
+    /**
+     **
+    输入：intervals = [[1,3],[2,6],[8,10],[15,18]]
+    输出：[[1,6],[8,10],[15,18]]
+    解释：区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].
+     */
     fun merge(interval: Array<IntArray>): Array<IntArray> {
         Arrays.sort(interval) { o1, o2 -> o1[0] - o2[0] }
 
@@ -45,28 +52,4 @@ class Merge {
         return merged.toTypedArray()
     }
 
-    /**
-     **
-    输入：intervals = [[1,3],[2,6],[8,10],[15,18]]
-    输出：[[1,6],[8,10],[15,18]]
-    解释：区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].
-     */
-    fun merge2(interval: Array<IntArray>): Array<IntArray> {
-        Arrays.sort(interval) { o1, o2 ->
-            o1[0] - o2[0]
-        }
-        var merged = mutableListOf<IntArray>()
-        var i = 0
-        while (i < interval.size) {
-            var temp = intArrayOf(interval[i][0], interval[i][1])
-            var j = i + 1
-            while (j < interval.size && temp[1] >= interval[j][0]) {
-                temp[1] = temp[1].coerceAtLeast(interval[j][1])
-                j++
-            }
-            merged.add(temp)
-            i = j
-        }
-        return merged.toTypedArray()
-    }
 }
