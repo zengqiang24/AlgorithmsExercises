@@ -42,3 +42,15 @@ fun generateInputList3(): ListNode? {
     node3.next = node4
     return list
 }
+
+fun generateInputList4(): ListNode? {
+    var list = ListNode(4)
+    var node2 = ListNode(2)
+    var node3 = ListNode(1)
+    var node4 = ListNode(3)
+//    [4,2,1,3]
+    list.next = node2
+    node2.next = node3
+    node3.next = node4
+    return list
+}
