@@ -1,6 +1,5 @@
 package leecode.sort
 
-import binarysearch.ListNode
 import java.util.*
 
 /**
@@ -21,7 +20,7 @@ import java.util.*
 fun main() {
     //[[1,3],[2,6],[8,10],[15,18]]
     var interval = arrayOf(intArrayOf(1, 3), intArrayOf(2, 6), intArrayOf(8, 10), intArrayOf(15, 18))
-    val mergedList = Merge().merge(interval)
+    val mergedList = Merge().mergeIntervals(interval)
     for (ints in mergedList) {
         println("[${ints[0]},${ints[1]}]")
     }
@@ -34,7 +33,7 @@ class Merge {
     输出：[[1,6],[8,10],[15,18]]
     解释：区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].
      */
-    fun merge(interval: Array<IntArray>): Array<IntArray> {
+    fun mergeIntervals(interval: Array<IntArray>): Array<IntArray> {
         Arrays.sort(interval) { o1, o2 -> o1[0] - o2[0] }
 
         var merged = mutableListOf<IntArray>()
